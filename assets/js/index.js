@@ -49,10 +49,10 @@ const arrayPrototype = {
   slice: function () {},
 
   push: function (...element) {
-    for(let i = 0; i < this.length; i++){
-      this.array[i] = element;
-      return this.array;
+    for(let i = 0; i < element.length; i++){
+      this.array[i] = element[i];
     }
+    return this.array;
   },
 
   pop: function (element) {
@@ -121,8 +121,8 @@ myarray.length = 1
 // console.log(funcIndex);
 
 //push
-// const funcPush = myarray.push(1, 2, 3, 4)
-// console.log(funcPush);
+const funcPush = myarray.push(1, 2, 3, 4)
+console.log(funcPush);
 
 //pop
 // const funcPop = myarray.pop(10);
