@@ -50,20 +50,28 @@ const arrayPrototype = {
 
   push: function (...element) {
     for(let i = 0; i < element.length; i++){
-      this.array[i] = element[i];
+      this.array = element[i];
     }
     return this.array;
   },
+  
 
   pop: function (element) {
-    this.array[element] = delete this.array[0];
-    return this.array;
+    for(let i = 0; i < this.length; i++) {
+      if(element === '') return undefined;
+      this.array = element[element.length-1];
+        delete element[element.length-1];
+        console.log(element);
+      }
+      return this.array;
   },
+
 
   concat: function (element,element2) {
     this.array = [element + ',' + element2];
     return this.array;
   },
+
 
   unshift: function (element,element2) {
     this.array = [...element,...element2];
@@ -71,12 +79,13 @@ const arrayPrototype = {
     // return this.array;
   },
 
+
   shift: function (element) {
-    const resShift = [];
     for (let i = 1; i < element.length; i++) {
-      resShift[i-1] = element[i]
+      if(element === '' ) return undefined;       //Переделать 
+      this.array[i-1] = element[i]
     }
-    return resShift;
+    return this.array;
   },
 }
 
@@ -85,7 +94,7 @@ const arrayPrototype = {
 
 // constructor func
 function MyArray() {
-  this.array = {}
+  this.array = [];
   this.length = 0;
 }
 
@@ -121,11 +130,13 @@ myarray.length = 1
 // console.log(funcIndex);
 
 //push
-const funcPush = myarray.push(1, 2, 3, 4)
-console.log(funcPush);
+// const pushNum = [1, 2, 3, 4];
+// const funcPush = myarray.push(pushNum);
+// console.log(funcPush);
 
 //pop
-// const funcPop = myarray.pop(10);
+// const popNum = [10, 9, 8];
+// const funcPop = myarray.pop(popNum);
 // console.log(funcPop);
 
 //concat
@@ -141,7 +152,7 @@ console.log(funcPush);
 // console.log(funcUnshift);
 
 //shift
-const arrNumShift = [1, 2, 3, 4, 5];
+const arrNumShift = [1, 2, 3, 4];
 const funcShift = myarray.shift(arrNumShift);
 console.log(funcShift);
 
