@@ -75,14 +75,14 @@ const arrayPrototype = {
 
   unshift: function (element,element2) {
     this.array = [...element,...element2];
-    return this.array.length;
-    // return this.array;
+    return this.array;
   },
 
 
   shift: function (element) {
     for (let i = 1; i < element.length; i++) {
-      if(element === '' ) return undefined;       //Переделать 
+      if(undefined) return undefined;
+      console.log(element.length);
       this.array[i-1] = element[i]
     }
     return this.array;
@@ -117,9 +117,9 @@ MyArray.isMyArray = (arg) => {
 // create instance (new)
 const myarray = new MyArray()
 
-myarray.array[this.length] = 4
-myarray.length = 1
-//////////////////////////////////////////////////////////////////////
+myarray.array[this.length] = 4;
+myarray.length = 1;
+/////////////////////////////////////////////////////////////////////
 
 //includes
 // const result = myarray.includes(4)
@@ -152,9 +152,9 @@ myarray.length = 1
 // console.log(funcUnshift);
 
 //shift
-const arrNumShift = [1, 2, 3, 4];
-const funcShift = myarray.shift(arrNumShift);
-console.log(funcShift);
+// const arrNumShift = [1, 2, 3, 4, 5];
+// const funcShift = myarray.shift(arrNumShift);
+// console.log(funcShift);
 
 
 
