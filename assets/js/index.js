@@ -26,10 +26,9 @@ const arrayPrototype = {
 
 
   // Class.prototype.includes
-  includes: function (arg) {
-    for(let i = 0; i < this.length; i++) {
-      
-      if (this.array[i] === arg) {
+  includes: function (searchElement,fromIndex = 0) {
+    for(let i = fromIndex; i < this.length; i++) {
+      if (this.array[i] === searchElement) {
         return true;
       }
     }
@@ -37,22 +36,25 @@ const arrayPrototype = {
   },
 
 
-  indexOf: function (arg) {
-    for(let i = 0; i < this.length; i++) {
-      if (this.array[i] === arg) {
+  indexOf: function (searchElement,fromIndex = 0) {
+    for(let i = fromIndex; i < this.length; i++) {
+      if (this.array[i] === searchElement) {
         return i;
       }
     }
     return -1;
   },
 
-  slice: function () {},
+  slice: function (begin, end) {
+    
+  },
 
-  push: function (...element) {
-    for(let i = 0; i < element.length; i++){
-      this.array = element[i];
+  push: function (...item) {
+    for(let i = 0; i < item.length; i++) {
+      this.array[this.length] = item[i];
+      this.length++;
     }
-    return this.array;
+    return this.length;
   },
   
 
@@ -61,15 +63,15 @@ const arrayPrototype = {
       if(element === '') return undefined;
       this.array = element[element.length-1];
         delete element[element.length-1];
-        console.log(element);
       }
       return this.array;
   },
 
 
-  concat: function (element,element2) {
-    this.array = [element + ',' + element2];
-    return this.array;
+  concat: function (element) {
+    const newArr = new MyArray();
+    
+    return newArr;
   },
 
 
@@ -94,8 +96,9 @@ const arrayPrototype = {
 
 // constructor func
 function MyArray() {
-  this.array = [];
+  this.array = {};
   this.length = 0;
+  
 }
 
 // bind prototype obj (Class.prototype)
@@ -117,7 +120,7 @@ MyArray.isMyArray = (arg) => {
 // create instance (new)
 const myarray = new MyArray()
 
-myarray.array[this.length] = 4;
+myarray.array[0] = 4;
 myarray.length = 1;
 /////////////////////////////////////////////////////////////////////
 
@@ -130,8 +133,7 @@ myarray.length = 1;
 // console.log(funcIndex);
 
 //push
-// const pushNum = [1, 2, 3, 4];
-// const funcPush = myarray.push(pushNum);
+// const funcPush = myarray.push(1, 2, 3, 4, 5);
 // console.log(funcPush);
 
 //pop
@@ -140,10 +142,10 @@ myarray.length = 1;
 // console.log(funcPop);
 
 //concat
-// const num1 = ['1', '2', '3', '4', '5'];
-// const num2 = ['6', '7', '8', '9', '10'];
-// const funcConcat = myarray.concat(num1, num2);
-// console.log(funcConcat);
+const num1 = ['1', '2', '3', '4', '5'];
+const num2 = ['6', '7', '8', '9', '10'];
+const funcConcat = myarray.concat(num1, num2);
+console.log(funcConcat);
 
 //unshift
 // const arr1 = [1, 2, 3];
